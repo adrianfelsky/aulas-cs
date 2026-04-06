@@ -1,5 +1,3 @@
-//Login
-
 Dictionary<string, string> users = new Dictionary<string, string>
 {
     {"adrian", "123" },
@@ -7,29 +5,13 @@ Dictionary<string, string> users = new Dictionary<string, string>
     {"everson", "789" },
 };
 
-byte numTentativas = 0;
-bool tentativa = true;
-bool redefine = false;
-bool existe = false;
-bool cadastro = true;
-string senha ="";
-string login="";
+bool saida = false;
+bool cadastro = false;
 
-//##############################
-//##############################
-//##############################
-//##############################
-//##############################
-//######### ALTERAÇÃO ##########
-//##############################
-//##############################
-//##############################
-//##############################
-//##############################
-//##############################
+string senha = "";
+string login = "";
 
-
-while (cadastro)
+while (!saida)
 {
     Console.Write("Login: ");
     login = Console.ReadLine();
@@ -39,12 +21,8 @@ while (cadastro)
     {
         Console.WriteLine("Usuario não cadastrado.");
         Console.Write("Deseja criar um usuário? (s/n): ");
-        if (Console.ReadLine() != "s")
-        {
-            tentativa = false;
-            cadastro = false;
 
-        }
+        if (Console.ReadLine() != "s") saida = true;
         else
         {
             Console.Write("Qual será seu login? ");
@@ -56,63 +34,56 @@ while (cadastro)
             users.Add(login, senha);
 
             Console.WriteLine("Usuário cadastrado.");
-
             cadastro = true;
 
         }
     }
     else cadastro = false;
-}
 
-while (tentativa)
-{
-    if (redefine == true)
+    if (!cadastro)
     {
-        Console.Write("Login: ");
-        login = Console.ReadLine();
-    }
-
-    Console.Write("Senha: ");
-    senha = Console.ReadLine();
-
-    numTentativas++;
-
-    if (senha == users[login])
-    {
-        Console.WriteLine("Acesso liberado.");
-        tentativa = false;
-    }
-    else
-    {
-        if (numTentativas > 2)
+        for (int i = 0; i <= 2; i++)
         {
-            Console.WriteLine("Tentativas demais. Acesso negado.");
-            return;
-        }
-
-        Console.Write("Acesso negado.\nTentar novamente? (s/n): ");
-        if (Console.ReadLine() != "s")
-        {
-            Console.Write("Redefinir senha? (s/n): ");
-            if (Console.ReadLine() != "s")
+            if (!saida)
             {
-                redefine = false;
-                tentativa = false;
-            }
-            else
-            {
-                Console.Write("Qual sua nova senha? ");
-                users[login] = Console.ReadLine();
+                Console.Write("Senha: ");
+                senha = Console.ReadLine();
 
-                redefine = true;
+                if (senha == users[login])
+                {
+                    Console.WriteLine("Acesso liberado.");
+                    i = 2;
+                    saida = true;
+                }
+                else
+                {
+                    if (i >= 2)
+                    {
+                        Console.WriteLine("Tentativas demais. Acesso negado.");
+                        saida = true;
+                    }
+                    else
+                    {
+                        Console.Write($"Acesso negado.\nTentativas restantes: {2 - i}\nTentar novamente? (s/n): ");
+
+                        if (Console.ReadLine() != "s")
+                        {
+                            Console.Write("Redefinir senha? (s/n): ");
+                            if (Console.ReadLine() != "s") saida = true;
+                            else
+                            {
+                                Console.Write("Qual sua nova senha? ");
+                                users[login] = Console.ReadLine();
+                                i = 2;
+
+                            }
+                        }
+
+                    }
+                }
             }
-        }
-        else
-        {
-            tentativa = true;
         }
     }
 }
 
 Console.WriteLine("Programa Encerrado.");
-
