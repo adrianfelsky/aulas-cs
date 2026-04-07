@@ -54,13 +54,13 @@ for (int j = 1; j <= 3; ++j)
         switch(i)
         {
             case (>10):
-                Console.WriteLine("        Número Alto");
+                Console.WriteLine("        Número Alto.");
                 break;
             case (< 0):
-                Console.WriteLine("        Menor que 0");
+                Console.WriteLine("        Menor que 0, digite um número válido.");
                 break;
             default:
-                Console.WriteLine("        Número Baixo");
+                Console.WriteLine("        Número Baixo.");
                 break;
             }
         } while (i <= 0);
@@ -68,3 +68,10 @@ for (int j = 1; j <= 3; ++j)
 }
 
 Console.WriteLine("  Programa Finalizado.");
+
+
+
+
+
+
+
