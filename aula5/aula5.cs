@@ -51,27 +51,23 @@ for (int j = 1; j <= 3; ++j)
     {
         Console.Write("      Escreva um número (maior que 0): ");
         i = int.Parse(Console.ReadLine());
-        switch(i)
+        switch (i)
         {
-            case (>10):
+            case (> 10):
                 Console.WriteLine("        Número Alto.");
                 break;
             case (< 0):
                 Console.WriteLine("        Menor que 0, digite um número válido.");
                 break;
+            case (0):
+                Console.WriteLine("        Deve ser um número maior que 0, digite um número válido.");
+                break;
             default:
                 Console.WriteLine("        Número Baixo.");
                 break;
-            }
-        } while (i <= 0);
+        }
+    } while (i <= 0);
     Console.WriteLine($"     Número digitado: {i}");
 }
 
 Console.WriteLine("  Programa Finalizado.");
-
-
-
-
-
-
-
