@@ -143,13 +143,13 @@ for (int i = 0; i < newNumeros2.Length; i++)
 //Desafio
 Console.WriteLine("\nDesafio:\n");
 
-int[] notas = new int[6];
-int media=0;
+float[] notas = new float[6];
+float media=0;
 Console.WriteLine("Escreva as 6 notas do aluno:");
 
 for (int i = 0; i < notas.Length; i++)
 {
-    notas[i] = int.Parse(Console.ReadLine());
+    notas[i] = float.Parse(Console.ReadLine());
 }
 
 Console.WriteLine("Média [.Average()]:" + notas.Average());
