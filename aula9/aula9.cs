@@ -81,7 +81,7 @@ do
             for (int i = 0; i < historico.Length; i++)
             {
                 if (historico[i] != null) Console.WriteLine(historico[i]);
-                else if(i == historico.Length-1 && historico[1]==null) Console.WriteLine("Nenhuma operação registrada.");
+                else if(i == historico.Length-1 && historico[0]==null) Console.WriteLine("Nenhuma operação registrada.");
             }
 
             validator = false;
