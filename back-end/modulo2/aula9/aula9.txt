@@ -1,3 +1,0 @@
-fazer pull do repositório:
-
-https://github.com/adrianfelsky/projeto-cs-git
