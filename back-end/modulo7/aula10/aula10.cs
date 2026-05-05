@@ -108,6 +108,9 @@ ContaBancaria conta1 = new ContaBancaria()
     Saldo = 1000.00,
 };
 
+conta1.Depositar(500.00);
+conta1.Sacar(200.00);
+
 conta1.ExibirSaldo();
 
 // exercício5:
