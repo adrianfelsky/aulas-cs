@@ -1,4 +1,4 @@
-﻿namespace aula10
+﻿namespace aula11
 {
     class ContaBancaria
     {
@@ -10,18 +10,16 @@
             Console.WriteLine($"Saldo atual: {Saldo}");
         }
 
-        public bool Depositar(double valor)
+        public void Depositar(double valor)
         {
             if (valor > 0)
             {
                 Saldo += valor;
-                Console.WriteLine($"Depósito de {valor} realizado com sucesso.");
-                return true;
+                Console.WriteLine($"\nDepósito de {valor} realizado com sucesso.");
             }
             else
             {
                 Console.WriteLine("Valor de depósito inválido.");
-                return false;
             }
         }
 
@@ -30,7 +28,7 @@
             if (valor > 0 && valor <= Saldo)
             {
                 Saldo -= valor;
-                Console.WriteLine($"Saque de {valor} realizado com sucesso.");
+                Console.WriteLine($"\nSaque de {valor} realizado com sucesso.");
             }
             else
             {

@@ -54,8 +54,7 @@ Carro carro2 = new Carro()
 
 Console.WriteLine($""""
     
-    {carro1.Marca}
-    {carro1.Modelo}
+    {carro1.Marca}  -  {carro1.Modelo}
 
     """");
 
@@ -108,10 +107,82 @@ ContaBancaria conta1 = new ContaBancaria()
     Saldo = 1000.00,
 };
 
-conta1.Depositar(500.00);
-conta1.Sacar(200.00);
+Console.WriteLine("\n\n===== CONTA BANCÁRIA =====");
 
-conta1.ExibirSaldo();
+bool sair = false;
+while (!sair)
+{
+    Console.Write("""
+        
+        Digite a operação:
+        1 - Sacar
+        2 - Depositar
+        3 - Exibir Saldo
+        x - Encerrar
+
+         >> 
+        """);
+
+    string operacao = Console.ReadLine();
+
+    switch (operacao)
+    {
+        case "1":
+
+            while (true)
+            {
+                Console.Write("Digite o valor a ser sacado (ou 'x' para encerrar):\n >> ");
+                string input = Console.ReadLine();
+                if (input.ToLower() == "x")
+                    break;
+                if (double.TryParse(input, out double valorSaque))
+                {
+                    conta1.Sacar(valorSaque);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Valor inválido. Por favor, digite um número válido.");
+                }
+            }
+            break;
+
+        case "2":
+
+            while (true)
+            {
+                Console.Write("Digite o valor a ser depositado (ou 'x' para encerrar):\n >> ");
+                string input = Console.ReadLine();
+                if (input.ToLower() == "x")
+                    break;
+                if (double.TryParse(input, out double valorDeposito))
+                {
+                    conta1.Depositar(valorDeposito);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Valor inválido. Por favor, digite um número válido.");
+                }
+            }
+            break;
+
+        case "3":
+
+            conta1.ExibirSaldo();
+            break;
+
+        case "x":
+            Console.WriteLine("Encerrando o programa...");
+            sair = true;
+            break;
+
+        default:
+            Console.WriteLine("Operação inválida. Por favor, escolha uma opção válida.");
+            break;
+
+    }
+}
 
 // exercício5:
 Console.WriteLine("\n\n############################\n\nExercício 5");

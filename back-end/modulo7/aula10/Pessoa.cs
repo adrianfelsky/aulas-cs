@@ -7,7 +7,7 @@
 
         public void Apresentar()
         {
-            Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Idade} anos.");
+            Console.WriteLine($"Olá, meu nome é {Nome}, tenho {Idade} anos e nasci em {(DateTime.Now.Year) - Idade}.");
         }
     }
 }
