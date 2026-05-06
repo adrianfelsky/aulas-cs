@@ -1,11 +1,11 @@
 ﻿using aula11;
-using System.Globalization;
 
 void exercicio(int num)
 {
     Console.WriteLine($"\n#########\nExercício {num}\n#########\n");
 }
 /*
+
 exercicio(1);
 
 Produto[] produtos = {
@@ -236,7 +236,6 @@ for (int i = 0; i < alunosEx8.Length; i++)
 {
     Console.WriteLine( i+1 + ". " + alunosEx8[i].Nome);
 }
-*/
 
 exercicio(9);
 
@@ -324,7 +323,7 @@ while (opcaoEx9 != "5")
     }
 }
 
-
+*/
 exercicio(10);
 
 string opcaoEx10 = "";
@@ -362,38 +361,36 @@ while (opcaoEx10 != "5")
             Console.Write("\nDigite o nome do usuário:\n >> ");
             string nome = Console.ReadLine();
             novasPessoas[k].Nome=nome;
-            Console.WriteLine($"\nConta criada para {novaConta.Titular} com saldo inicial de R${novaConta.Saldo}");
+            Console.WriteLine($"Usuário {novasPessoas[k].Nome} cadastrado.");
             k++;
             break;
         case "2":
-            if (!ContaExiste(novaConta.Titular)) break;
-            Console.Write("\nDigite o valor a ser depositado:\n >> ");
-            if (double.TryParse(Console.ReadLine(), out double valorDeposito))
+            for (int i = 0; i < k; i++)
             {
-                novaConta.Depositar(valorDeposito);
-            }
-            else
-            {
-                Console.WriteLine("Valor inválido. Por favor, digite um número válido.");
+                if (novasPessoas[i].Nome != null)
+                {
+                    Console.WriteLine($"{i + 1}. {novasPessoas[i].Nome}");
+                }
             }
             break;
         case "3":
-            if (!ContaExiste(novaConta.Titular)) break;
-            Console.Write("\nDigite o valor a ser sacado:\n >> ");
-            if (double.TryParse(Console.ReadLine(), out double valorSaque))
+            Console.Write("Digite o nome do usuário a ser buscado.\n >> ");
+            string nomeProcurado = Console.ReadLine();
+
+            for (int i = 0; i < k; i++)
             {
-                novaConta.Sacar(valorSaque);
-            }
-            else
-            {
-                Console.WriteLine("Valor inválido. Por favor, digite um número válido.");
+                if (novasPessoas[i].Nome == nomeProcurado)
+                {
+                    Console.WriteLine($"\nUsuário encontrado: {novasPessoas[i].Nome}");
+                    break;
+                }
+                else if (i == k - 1)
+                {
+                    Console.WriteLine("\nUsuário não encontrado.");
+                }
             }
             break;
         case "4":
-            if (!ContaExiste(novaConta.Titular)) break;
-            novaConta.ExibirSaldo();
-            break;
-        case "5":
             Console.WriteLine("Encerrando o programa...");
             break;
         default:
