@@ -5,7 +5,6 @@ void exercicio(int num)
     Console.WriteLine($"\n#########\nExercício {num}\n#########\n");
 }
 /*
-
 exercicio(1);
 
 Produto[] produtos = {
@@ -19,45 +18,23 @@ for (int i=0;i<produtos.Length;i++)
     produtos[i].ExibirInformacoes();
 }
 
-
 exercicio(2);
 
-bool sairEx2 = false;
-while (!sairEx2)
-{
-    int j = 0;
-    Console.Write("Digite o nome para cadastrar ou 'x' para sair.\n >> ");
-    string nome = Console.ReadLine();
-    if (nome == "x")
-    {
-        sairEx2 = true;
-    }
-    else
-    {
-        Console.Write("\nDigite a idade:\n >> ");
-        int idade = int.Parse(Console.ReadLine());
-        Pessoa novaPessoa = new Pessoa { Nome = nome, Idade = idade };
-        j++;
-        novaPessoa.Apresentacao();
-    }
-
-}
-
+Pessoa.CadastroPessoa();
 
 exercicio(3);
 
-Aluno[] alunos = {
+Aluno[] alunosEx3 = {
     new Aluno { Nome = "Alice", Idade = 20, Nota = 8.5f },
     new Aluno { Nome = "Bob", Idade = 22, Nota = 6.0f },
     new Aluno { Nome = "Charlie", Idade = 19, Nota = 7.0f }
 };
 
-for (int i = 0; i < alunos.Length; i++)
+for (int i = 0; i < alunosEx3.Length; i++)
 {
-    alunos[i].VerificarSituacao();
+    alunosEx3[i].VerificarSituacao();
 }
-
-
+*/
 exercicio(4);
 
 ContaBancaria conta1 = new ContaBancaria()
@@ -67,83 +44,23 @@ ContaBancaria conta1 = new ContaBancaria()
 };
 
 Console.WriteLine("===== CONTA BANCÁRIA =====");
-
-bool sairEx4 = false;
-while (!sairEx4)
+bool sair =false;
+while (!sair)
 {
-    Console.Write("""
-
-        Digite a operação:
-        1 - Sacar
-        2 - Depositar
-        3 - Exibir Saldo
-        x - Encerrar
-
-         >> 
-        """);
-
-    string operacao = Console.ReadLine();
-
-    switch (operacao)
+    switch (ContaBancaria.Menu())
     {
-        case "1":
-
-            while (true)
-            {
-                Console.Write("\nDigite o valor a ser sacado (ou 'x' para encerrar):\n >> ");
-                string input = Console.ReadLine();
-                if (input.ToLower() == "x")
-                    break;
-                if (double.TryParse(input, out double valorSaque))
-                {
-                    conta1.Sacar(valorSaque);
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Valor inválido. Por favor, digite um número válido.");
-                }
-            }
-            break;
-
-        case "2":
-
-            while (true)
-            {
-                Console.Write("Digite o valor a ser depositado (ou 'x' para encerrar):\n >> ");
-                string input = Console.ReadLine();
-                if (input.ToLower() == "x")
-                    break;
-                if (double.TryParse(input, out double valorDeposito))
-                {
-                    conta1.Depositar(valorDeposito);
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Valor inválido. Por favor, digite um número válido.");
-                }
-            }
-            break;
-
-        case "3":
-
-            conta1.ExibirSaldo();
-            break;
-
-        case "x":
-            conta1.ExibirSaldo();
-            Console.WriteLine("Encerrando o programa...");
-            sairEx4 = true;
-            break;
+        case "1": conta1.Sacar(); break;
+        case "2": conta1.Depositar(); break;
+        case "3": conta1.ExibirSaldo(); break;
+        case "x": conta1.Sair(); sair = true; break;
 
         default:
             Console.WriteLine("Operação inválida. Por favor, escolha uma opção válida.");
             break;
 
     }
-}
-
+} 
+/*
 exercicio(5);
 
 Produto[] produtosEx5 = new Produto[3];
@@ -166,6 +83,7 @@ for (int i = 0; i < produtosEx5.Length; i++)
 }
 
 exercicio(6);
+
 string nomeProcurado ="";
 
 Pessoa[] pessoasEx6 = {
@@ -323,20 +241,22 @@ while (opcaoEx9 != "5")
     }
 }
 
-*/
 exercicio(10);
 
 string opcaoEx10 = "";
 
-Pessoa[] novasPessoas = new Pessoa[5];
+int tam = 5;
+int k = 0;
+
+Pessoa[] novasPessoas = new Pessoa[tam];
 
 Console.WriteLine($"{new string('=', 25)}\n" +
     $"{new string('=', 3)} CADASTRO PESSOAS {new string('=', 3)}\n" +
     $"{new string('=', 25)}");
 
-while (opcaoEx10 != "5")
+
+while (opcaoEx10 != "4")
 {
-    int k = 0;
 
     Console.Write("""
 
@@ -353,43 +273,53 @@ while (opcaoEx10 != "5")
     switch (opcaoEx10)
     {
         case "1":
-            if (k>=4)
+            if (k >= tam)
             {
                 Console.WriteLine("\nNúmero máximo de usuários atingido. Por favor, escolha outra opção.");
                 break;
             }
             Console.Write("\nDigite o nome do usuário:\n >> ");
-            string nome = Console.ReadLine();
-            novasPessoas[k].Nome=nome;
+
+            novasPessoas[k] = new Pessoa { Nome = Console.ReadLine() };
             Console.WriteLine($"Usuário {novasPessoas[k].Nome} cadastrado.");
             k++;
             break;
         case "2":
-            for (int i = 0; i < k; i++)
+
+            for (int i = 0; i < novasPessoas.Length; i++)
             {
-                if (novasPessoas[i].Nome != null)
+                if (novasPessoas[i] != null)
                 {
                     Console.WriteLine($"{i + 1}. {novasPessoas[i].Nome}");
+                }
+                else if (i == novasPessoas.Length - 1)
+                {
+                    Console.WriteLine("\nNenhum usuário cadastrado.");
                 }
             }
             break;
         case "3":
-            Console.Write("Digite o nome do usuário a ser buscado.\n >> ");
-            string nomeProcurado = Console.ReadLine();
-
-            for (int i = 0; i < k; i++)
+            if (novasPessoas[0] != null)
             {
-                if (novasPessoas[i].Nome == nomeProcurado)
+                Console.Write("Digite o nome do usuário a ser buscado.\n >> ");
+                string nomeBuscado = Console.ReadLine();
+
+                for (int i = 0; i < k; i++)
                 {
-                    Console.WriteLine($"\nUsuário encontrado: {novasPessoas[i].Nome}");
-                    break;
+
+                    if (novasPessoas[i].Nome == nomeBuscado)
+                    {
+                        Console.WriteLine($"\nUsuário encontrado: {novasPessoas[i].Nome}");
+                        break;
+                    }
+                    else if (i == k - 1)
+                    {
+                        Console.WriteLine("\nUsuário não encontrado.");
+                    }
                 }
-                else if (i == k - 1)
-                {
-                    Console.WriteLine("\nUsuário não encontrado.");
-                }
-            }
-            break;
+            } else Console.WriteLine("Nenhum usuário cadastrado.");
+
+    break;
         case "4":
             Console.WriteLine("Encerrando o programa...");
             break;
@@ -399,3 +329,103 @@ while (opcaoEx10 != "5")
     }
 }
 
+Console.WriteLine($"\n#########\nDesafio\n#########\n");
+
+
+
+string opcaoDesafio = "";
+
+int tamDesafio = 5;
+int count = 0;
+
+Aluno[] alunos = new Aluno[tamDesafio];
+
+Console.WriteLine($"{new string('=', 25)}\n" +
+    $"{new string('=', 5)} NOTAS {new string('=', 5)}\n" +
+    $"{new string('=', 25)}");
+
+float somaNotas = 0;
+
+while (opcaoDesafio != "5")
+{
+
+    Console.Write("""
+
+        1 - Cadatrar aluno
+        2 - Listar alunos
+        3 - Mostar média da turma
+        4 - Mostrar aprovados
+        5 - Encerrar
+
+         >> 
+        """);
+
+    opcaoDesafio = Console.ReadLine();
+
+    switch (opcaoDesafio)
+    {
+        case "1":
+            if (count >= tamDesafio)
+            {
+                Console.WriteLine("\nNúmero máximo de alunos atingido. Por favor, escolha outra opção.");
+                break;
+            }
+            Console.Write("\nDigite o nome do aluno:\n >> ");
+            alunos[count] = new Aluno { Nome = Console.ReadLine() };
+            Console.Write("Digite a nota do aluno:\n >> ");
+
+            while (!float.TryParse(Console.ReadLine(), out alunos[count].Nota))
+            {
+                Console.Write("Nota inválida. Por favor, digite um número válido:\n >> ");
+            }
+            somaNotas += alunos[count].Nota;
+
+            Console.WriteLine($"Usuário {alunos[count].Nome} cadastrado.");
+            count++;
+            break;
+        case "2":
+
+            for (int i = 0; i < alunos.Length; i++)
+            {
+                if (alunos[i] != null)
+                {
+                    Console.WriteLine($"{i + 1}. {alunos[i].Nome} - {alunos[i].Nota}");
+                }
+                else if (i == alunos.Length - 1)
+                {
+                    Console.WriteLine("\nNenhum usuário cadastrado.");
+                }
+            }
+            break;
+        case "3":
+            Aluno.MediaTurma(somaNotas,count);
+
+            break;
+
+        case "4":
+            int alunosAprovados=0;
+            for (int i = 0; i < alunos.Length; i++)
+            {
+                if (alunos[i] != null)
+                {
+                    if (alunos[i].VerificarSituacao()) alunosAprovados++;
+                }
+                else if (i == alunos.Length - 1)
+                {
+                    Console.WriteLine("\nNenhum usuário cadastrado.");
+                }
+            }
+
+            Console.WriteLine($"Alunos aprovados: {alunosAprovados}");
+
+            break;
+        case "5":
+            Console.WriteLine("Encerrando o programa...");
+            break;
+        default:
+            Console.WriteLine("Opção inválida. Por favor, escolha uma opção válida.");
+            break;
+    }
+}
+
+*/
