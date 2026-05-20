@@ -26,5 +26,5 @@ string salario = salarioTemp.ToString("c2");
 decimal anualTemp = salarioTemp * 12;
 string anual = anualTemp.ToString("c2");
 
-Console.WriteLine($"Seu salário de {salario} é {anual} anualmente.");
+Console.WriteLine($"Seu salário de {salario} é {anual} ao ano.");
 
