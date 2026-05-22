@@ -1,0 +1,179 @@
+/* Variáveis de cores para facilitar manutenção */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --bg-color: #f8f9fa;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tipografia e Fundo */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Container centralizador */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #bdc3c7;
+    margin-bottom: 2.5rem;
+}
+
+/* Navegação Principal */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--accent-color);
+}
+
+/* Configuração geral das seções */
+.section {
+    padding: 4rem 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* Sobre Mim */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Habilidades (CSS Grid) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--accent-color);
+    transition: transform 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+/* Projetos e Experiência */
+.project-list, .experience-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-card, .experience-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.project-card h3, .experience-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.experience-card strong {
+    display: block;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade adicional */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+    }
+}
