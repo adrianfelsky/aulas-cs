@@ -1,92 +1,154 @@
-/* Variáveis de cores para facilitar manutenção */
+/* Paleta de Cores Tech / Cyber */
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
-    --accent-color: #3498db;
-    --bg-color: #f8f9fa;
-    --text-color: #333333;
-    --card-bg: #ffffff;
+    --bg-dark: #0f172a;        /* Fundo principal escuro */
+    --bg-darker: #020617;      /* Fundo mais escuro */
+    --accent-cyan: #06b6d4;    /* Ciano Neon */
+    --accent-purple: #8b5cf6;  /* Roxo moderno */
+    --text-main: #f8fafc;      /* Texto claro */
+    --text-muted: #94a3b8;     /* Texto secundário */
+    --glass-bg: rgba(30, 41, 59, 0.5); /* Fundo dos cards */
+    --glass-border: rgba(255, 255, 255, 0.08);
+    
+    /* Gradiente principal */
+    --primary-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
 }
 
-/* Reset básico */
+/* Reset básico e Scroll suave */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Tipografia e Fundo */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    background-color: var(--bg-darker);
+    color: var(--text-main);
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de luz no fundo (Opcional, dá um charme absurdo) */
+.bg-animation {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Container centralizador */
 .container {
     width: 90%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-/* Cabeçalho */
+/* Cabeçalho Fixo (Sticky) com Glassmorphism */
 header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 4rem 0 3rem;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     text-align: center;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 1.2rem;
-    color: #bdc3c7;
-    margin-bottom: 2.5rem;
-}
-
-/* Navegação Principal */
+/* Navegação Principal - Estilo Pílulas */
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
 nav a {
-    color: white;
+    color: var(--text-main);
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     text-decoration: none;
     font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
-    background-color: var(--accent-color);
+    background: var(--primary-gradient);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Texto com Gradiente (O "Tchan" do design) */
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Configuração geral das seções */
-.section {
-    padding: 4rem 0;
-    border-bottom: 1px solid #e0e0e0;
+section {
+    padding: 5rem 0;
 }
 
-.section:last-of-type {
-    border-bottom: none;
-}
-
-.section h2 {
+section h1 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-    color: var(--primary-color);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    color: var(--text-main);
+    position: relative;
+}
+
+/* Linha decorativa embaixo dos títulos das seções */
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-gradient);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Efeito Glassmorphism Genérico para Cards */
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel:hover {
+    transform: translateY(-5px);
+    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2);
 }
 
 /* Sobre Mim */
@@ -94,86 +156,175 @@ nav a:hover {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    color: var(--text-muted);
 }
 
 /* Habilidades (CSS Grid) */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
-.skill-card {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-left: 4px solid var(--accent-color);
-    transition: transform 0.2s ease;
-}
-
-.skill-card:hover {
-    transform: translateY(-5px);
-}
-
 .skill-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Projetos e Experiência */
-.project-list, .experience-card-container {
+.skill-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.skill-card strong {
+    color: var(--text-main);
+}
+
+/* Projetos */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.project-card h3 {
+    color: var(--accent-purple);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.project-card p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Botões dos Projetos */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+.btn-outline:hover {
+    background: rgba(139, 92, 246, 0.1);
+    box-shadow: none;
+}
+
+/* Formação Acadêmica */
+.formacao-list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.project-card, .experience-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.project-card h3, .experience-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.experience-card strong {
-    display: block;
-    color: var(--accent-color);
+.formacao-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.formacao-card-header h3 {
+    color: var(--text-main);
+    font-size: 1.2rem;
+}
+
+.tag {
+    background: rgba(6, 182, 212, 0.1);
+    color: var(--accent-cyan);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.formacao-card p {
+    color: var(--text-muted);
 }
 
 /* Rodapé */
 footer {
     text-align: center;
-    padding: 2rem 0;
-    background-color: var(--primary-color);
-    color: white;
+    padding: 3rem 0;
+    background-color: #020617;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 2rem;
 }
 
-footer a {
-    color: var(--accent-color);
-    text-decoration: none;
-    margin: 0 0.5rem;
-    font-weight: bold;
+.footer-links {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
-footer a:hover {
-    text-decoration: underline;
+.footer-links a img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%); /* Deixa o ícone totalmente branco */
+    /* Transition "all" garante que o brilho e a movimentação fiquem suaves */
+    transition: all 0.3s ease; 
 }
 
-/* Responsividade adicional */
+/* Quando passar o mouse no link (a), aplica o efeito na imagem (img) */
+.footer-links a:hover img {
+    /* Mantém branco, mas adiciona uma sombra/brilho Neon da cor do seu Cyan */
+    filter: invert(100%) drop-shadow(0 0 10px var(--accent-cyan));
+    
+    /* Faz o ícone "saltar" levemente para cima */
+    transform: translateY(-4px); 
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: #475569;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
-    nav ul {
-        gap: 1rem;
+    .formacao-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    section {
+        padding: 3rem 0;
     }
 }
