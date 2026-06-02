@@ -8,13 +8,11 @@ namespace aula16
 {
     public class Produto
     {
-        public string Nome { get; private set; }
-        public double Preco { get; private set; }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Categoria { get; set; }
+        public double Preco { get;set; }
+        public int Estoque { get; set; }
 
-        public Produto(string nome, double preco)
-        {
-            Nome = nome;
-            Preco = preco;
-        }
     }
 }
