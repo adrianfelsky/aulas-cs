@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "Nome": "Smartphone",
+    "Categoria": "Eletrônicos",
+    "Preco": 1999.99
+  },
+  {
+    "Id": 2,
+    "Nome": "Notebook",
+    "Categoria": "Eletrônicos",
+    "Preco": 2999.99
+  },
+  {
+    "Id": 3,
+    "Nome": "Cadeira Gamer",
+    "Categoria": "Móveis",
+    "Preco": 899.99
+  },
+  {
+    "Id": 4,
+    "Nome": "Mesa de Escritório",
+    "Categoria": "Móveis",
+    "Preco": 1299.99
+  },
+  {
+    "Id": 5,
+    "Nome": "Fone de Ouvido",
+    "Categoria": "Eletrônicos",
+    "Preco": 299.99
+  }
+]
