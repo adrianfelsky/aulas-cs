@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using MeuSite.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Models;
 
-namespace MeuSite.Controllers
+namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
@@ -26,7 +26,6 @@ namespace MeuSite.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            _logger.LogError("ERRRRRRRRRROU.");
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
