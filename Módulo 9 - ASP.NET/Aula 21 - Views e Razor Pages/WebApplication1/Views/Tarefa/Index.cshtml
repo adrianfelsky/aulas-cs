@@ -1,0 +1,21 @@
+﻿@model List<WebApplication1.Models.Tarefa>
+
+<h2>Minhas Tarefas</h2>
+
+<ul>
+    @foreach (var tarefa in Model)
+    {
+        <li>
+            @tarefa.Titulo
+
+            @if (tarefa.Concluida)
+            {
+                <span>✅</span>
+            }
+            else
+            {
+                <span>❌</span>
+            }
+        </li>
+    }
+</ul>
