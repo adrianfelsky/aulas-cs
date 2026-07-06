@@ -36,10 +36,5 @@ namespace WebApplication1.Controllers
 
         }
 
-        public IActionResult Estoque(int quantidades)
-        {
-            ViewBag.Quantidades = quantidades;
-            return View();
-        }
     }
 }

@@ -18,5 +18,11 @@ namespace WebApplication1.Controllers
 
             return View(produtos);
         }
+
+        public IActionResult Estoque(int quantidade)
+        {
+            ViewBag.Quantidade = quantidade;
+            return View();
+        }
     }
 }
