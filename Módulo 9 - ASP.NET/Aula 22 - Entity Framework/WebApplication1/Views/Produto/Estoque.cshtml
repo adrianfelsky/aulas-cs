@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Status do Estoque";
+    int quantidade = ViewBag.Quantidade ?? 0;
+}
+
+<h2>Controle de Estoque</h2>
+<p>Quantidade no sistema: <strong>@quantidade</strong></p>
+
+<hr />
+
+@if (quantidade > 0)
+{
+    <h3 style="color: green;">Em estoque</h3>
+
+    @if (quantidade < 5)
+    {
+        <h4 style="color: darkorange;">⚠️ Últimas unidades!</h4>
+    }
+}
+else
+{
+    <h3 style="color: red;">Esgotado</h3>
+}

@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Produto";
+}
+@model List<WebApplication1.Models.Produto>
+
+<h2>Catálogo de Produtos</h2>
+
+<div style="display: flex; flex-wrap: wrap;">
+    @foreach (var produto in Model)
+    {
+        <partial name="_CardProduto" model="produto" />
+    }
+</div>
